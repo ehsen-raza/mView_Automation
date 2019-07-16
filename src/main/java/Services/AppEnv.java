@@ -8,8 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AppEnv {
 
-    String Browser;
-    RemoteWebDriver Driver;
+    private String Browser;
+    private RemoteWebDriver Driver;
 
 
     public RemoteWebDriver getDriver() {
