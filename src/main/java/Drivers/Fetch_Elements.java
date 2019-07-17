@@ -11,9 +11,11 @@ import java.util.List;
  * This class will manage the Selenium libraries use to get elements
  */
 public class Fetch_Elements {
-    private static Fetch_Elements fetch_elements = new Fetch_Elements( );
+    private static Fetch_Elements fetch_elements = new Fetch_Elements();
     private static AppEnv appEnv = new AppEnv();
-    private Fetch_Elements() { }
+
+    private Fetch_Elements() {
+    }
 
     /* Static 'instance' method */
     public static Fetch_Elements getInstance(AppEnv appEnv) {
@@ -21,7 +23,7 @@ public class Fetch_Elements {
         return fetch_elements;
     }
 
-    public WebElement GetObj(List<String> locator, List<String> locatorValue){
+    public WebElement GetObj(List<String> locator, List<String> locatorValue) {
         WebElement webElement = null;
         int Index = 0;
         RemoteWebDriver localDriver = appEnv.getDriver();
@@ -40,8 +42,7 @@ public class Fetch_Elements {
                     webElement = localDriver.findElement(By.name(locatorValue.get(Index)));
                 }
             }
-                }
-        catch (Exception exh){
+        } catch (Exception exh) {
             System.out.println("Fetcher Exception");
         }
         return webElement;

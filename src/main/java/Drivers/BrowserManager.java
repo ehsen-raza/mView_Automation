@@ -16,9 +16,11 @@ import java.util.logging.Level;
 
 public class BrowserManager {
     private ChromeDriver chromeDriver = null;
-    private static BrowserManager browserManager = new BrowserManager( );
+    private static BrowserManager browserManager = new BrowserManager();
     private static AppEnv appEnv = new AppEnv();
-    private BrowserManager() { }
+
+    private BrowserManager() {
+    }
 
     /* Static 'instance' method */
     public static BrowserManager getInstance(AppEnv appEnv) {
@@ -29,9 +31,9 @@ public class BrowserManager {
     /**
      * This method will launch a webdriver
      */
-    public void Launch_Browser(){
+    public void Launch_Browser() {
 
-        if(appEnv.getBrowser().equalsIgnoreCase("Chrome")){
+        if (appEnv.getBrowser().equalsIgnoreCase("Chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions crOptions = new ChromeOptions();
             chromeDriver = new ChromeDriver(crOptions);
@@ -39,8 +41,8 @@ public class BrowserManager {
             appEnv.setDriver(chromeDriver);
         }
     }
-    public void GetURL()
-    {
+
+    public void GetURL() {
         appEnv.getDriver().get(appEnv.getDomain());
     }
 
@@ -49,7 +51,7 @@ public class BrowserManager {
      * This method will kill a webdriver
      */
 
-    public void Kill_Driver(){
+    public void Kill_Driver() {
         appEnv.getDriver().close();
         appEnv.getDriver().quit();
     }
