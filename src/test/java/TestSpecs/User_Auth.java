@@ -19,7 +19,7 @@ public class User_Auth {
      * This is constructor class
      */
 
-    public User_Auth(){
+    public User_Auth() {
         appEnv = SuiteListener.appEnv;
         pgLogin = LoginObj.getInstance(appEnv);
     }
@@ -28,10 +28,8 @@ public class User_Auth {
      * This test will make sure user login functionality is working correctly
      */
 
-    @Test (enabled = true)
-    public void User_Login()
-    {
-
+    @Test(enabled = true)
+    public void User_Login() {
         pgLogin.Type_UserName("raiirfan@gmail.com");
         pgLogin.Type_Password("irfan");
         pgLogin.Click_LoginButton();

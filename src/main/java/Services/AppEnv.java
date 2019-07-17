@@ -15,6 +15,7 @@ public class AppEnv {
 
     /**
      * This mehtod is get domain name
+     *
      * @return
      */
     public String getDomain() {
@@ -23,13 +24,12 @@ public class AppEnv {
 
     /**
      * This method is to set domain name
+     *
      * @param domain
      */
     public void setDomain(String domain) {
         Domain = domain;
     }
-
-
 
 
     public RemoteWebDriver getDriver() {
