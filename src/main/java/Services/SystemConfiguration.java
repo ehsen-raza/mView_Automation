@@ -36,6 +36,7 @@ public class SystemConfiguration {
             System.out.println("IO Exception");
         }
         appEnv.setBrowser(prop.getProperty("Browser"));
+        appEnv.setDomain(prop.getProperty("Domain"));
 
         return appEnv;
     }

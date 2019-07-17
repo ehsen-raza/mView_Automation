@@ -8,8 +8,28 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AppEnv {
 
-    private String Browser;
-    private RemoteWebDriver Driver;
+    String Browser;
+    RemoteWebDriver Driver;
+    String Domain;
+
+
+    /**
+     * This mehtod is get domain name
+     * @return
+     */
+    public String getDomain() {
+        return Domain;
+    }
+
+    /**
+     * This method is to set domain name
+     * @param domain
+     */
+    public void setDomain(String domain) {
+        Domain = domain;
+    }
+
+
 
 
     public RemoteWebDriver getDriver() {

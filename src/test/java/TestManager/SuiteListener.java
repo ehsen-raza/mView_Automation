@@ -20,6 +20,8 @@ public class SuiteListener implements ISuiteListener {
         appEnv = SysConfig.Read_Properties(appEnv);
         browserManager = BrowserManager.getInstance(appEnv);
         browserManager.Launch_Browser();
+        browserManager.GetURL();
+
 
     }
 

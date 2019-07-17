@@ -1,7 +1,7 @@
 package TestSpecs;
 
+import PageObj.LoginObj;
 import Services.AppEnv;
-import Services.SystemConfiguration;
 import TestManager.SuiteListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 public class User_Auth {
 
     private static AppEnv appEnv = new AppEnv();
+    private LoginObj pgLogin = null;
 
     /**
      * This is constructor class
@@ -20,6 +21,7 @@ public class User_Auth {
 
     public User_Auth(){
         appEnv = SuiteListener.appEnv;
+        pgLogin = LoginObj.getInstance(appEnv);
     }
 
     /**
@@ -27,9 +29,14 @@ public class User_Auth {
      */
 
     @Test (enabled = true)
-    public void User_Login(){
+    public void User_Login()
+    {
 
-        System.out.println(appEnv.getBrowser());
+        pgLogin.Type_UserName("raiirfan@gmail.com");
+        pgLogin.Type_Password("irfan");
+        pgLogin.Click_LoginButton();
+        pgLogin.Click_Proceed();
+        pgLogin.Compare_Assert("Log Out");
     }
 }
 /*--------------------------------------------------------------------------------------------------------------------*/

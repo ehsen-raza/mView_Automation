@@ -39,6 +39,11 @@ public class BrowserManager {
             appEnv.setDriver(chromeDriver);
         }
     }
+    public void GetURL()
+    {
+        appEnv.getDriver().get(appEnv.getDomain());
+    }
+
 
     /**
      * This method will kill a webdriver
