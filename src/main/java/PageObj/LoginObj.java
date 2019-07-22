@@ -60,8 +60,8 @@ public class LoginObj {
      *
      * @param ExpectedTest
      */
-    public void Compare_Assert(String ExpectedTest) {
-        Assert.assertEquals(appEnv.getDriver().findElement(By.id("ctl00_btnLogout")).getText(), ExpectedTest);
+    public void Compare_Assert(String ExpectedTest, String ActualTest) {
+        Assert.assertEquals(ActualTest, ExpectedTest);
     }
 
     /**
@@ -70,6 +70,16 @@ public class LoginObj {
     public void Click_Proceed() {
         appEnv.getDriver().findElement(By.id("yes")).click();
     }
+
+    public boolean Incorrect_Login(String ExpectedText){
+        if(appEnv.getDriver().findElement(By.cssSelector("div[style='color: #F3F3F4; font-size: 16px;']")).getText().equalsIgnoreCase(ExpectedText))
+        return true;
+        else
+            return false;
+    }
+    //    List<WebElement> webElementList = appEnv.getDriver().findElement(By.tagName(""))
+    //    return false;
+    //}
 
 
 }

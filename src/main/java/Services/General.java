@@ -76,7 +76,7 @@ public class General {
             DrpDown.selectByIndex(index);
         }catch (Exception e)
         {
-            System.out.println("Unable to Clear field");
+            System.out.println("Unable to Select Drop down field");
         }
     }
 
