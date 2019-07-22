@@ -16,7 +16,7 @@ public class User_Auth {
 
     private static AppEnv appEnv = new AppEnv();
     private LoginObj pgLogin = null;
-    private NavigateMenu navigateMenu = NavigateMenu.getInstance(appEnv);
+    private NavigateMenu navigateMenu = null;
 
     /**
      * This is constructor class
@@ -25,6 +25,7 @@ public class User_Auth {
     public User_Auth() {
         appEnv = SuiteListener.appEnv;
         pgLogin = LoginObj.getInstance(appEnv);
+        navigateMenu = NavigateMenu.getInstance(appEnv);
     }
 
     /**
@@ -53,7 +54,7 @@ public class User_Auth {
     @Test(enabled = true, priority = 2)
     public void Navigate() {
         System.out.println("Navigate is started.");
-        navigateMenu.SelectMenu("Media", "Sessions");
+        navigateMenu.SelectMenu("Administration", "Roles");
 
     }
 }

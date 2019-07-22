@@ -1,7 +1,9 @@
 package PageObj;
 
 import Services.AppEnv;
+import Services.General;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginObj {
     private static LoginObj loginObj = new LoginObj();
     private static AppEnv appEnv = new AppEnv();
+    private static General Utils = null;
 
     private LoginObj() {
     }
@@ -19,6 +22,7 @@ public class LoginObj {
     /* Static 'instance' method */
     public static LoginObj getInstance(AppEnv appEnv) {
         LoginObj.appEnv = appEnv;
+        Utils = General.getInstance(appEnv);
         return loginObj;
     }
 
@@ -68,7 +72,15 @@ public class LoginObj {
      * This function is to click proceed button on Terms and Conditions page.
      */
     public void Click_Proceed() {
-        appEnv.getDriver().findElement(By.id("yes")).click();
+
+        WebElement btProceed = appEnv.getDriver().findElement(By.id("yes"));
+        boolean GetStatus = Utils.ClickObj(btProceed);
+        System.out.println("Proceed button clicked: " + GetStatus);
+
+        Utils.StaticWait(2000);
+        GetStatus = Utils.Wait_For_Element(btProceed, 3);
+        System.out.println("Proceed Window Exist on UI: " + GetStatus);
+
     }
 
     public boolean Incorrect_Login(String ExpectedText){

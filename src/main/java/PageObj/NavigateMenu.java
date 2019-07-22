@@ -6,8 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class NavigateMenu
-{
+public class NavigateMenu {
 
     private static NavigateMenu navigateMenu = new NavigateMenu();
     private static AppEnv appEnv = new AppEnv();
@@ -21,15 +20,11 @@ public class NavigateMenu
         return navigateMenu;
     }
 
-    public void SelectMenu(String MainMenu, String SubMenu)
-    {
-        switch (MainMenu)
-        {
-            case "Media":
-                {
+    public void SelectMenu(String MainMenu, String SubMenu) {
+        switch (MainMenu) {
+            case "Media": {
                 appEnv.getDriver().findElement(By.xpath("//*[@id='ctl00_navMenu']/div[@class='nav_menu']/ul/li[1]")).click();
-                switch (SubMenu)
-                {
+                switch (SubMenu) {
                     case "Sessions":
                         System.out.println("Sessions Clicked.");
                         break;
@@ -45,36 +40,28 @@ public class NavigateMenu
                         break;
                     case "Evidence Brief":
                         break;
-                        default:
-                            System.out.println("SubMenu is not found under Media");
+                    default:
+                        System.out.println("SubMenu is not found under Media");
 
                 }
                 break;
             }
-            case "Streaming":
-                {
-                    System.out.println("Streaming menu clicked");
+            case "Streaming": {
+                System.out.println("Streaming menu clicked");
                 //Click Streaming Menu
-                switch (SubMenu)
-                {
+                switch (SubMenu) {
                     case "Live":
                         break;
-                        default:
-                            System.out.println("SubMenu is not found Under Streaming");
+                    default:
+                        System.out.println("SubMenu is not found Under Streaming");
                 }
                 break;
 
             }
             case "Administration":
-                {
-                    {
-                        System.out.println("reached here");
-                        List<WebElement> elementList = appEnv.getDriver().findElements(By.cssSelector("a[title='Administration']"));
-                        System.out.println("Number of Elements found" + elementList.size());
-                    }
+                appEnv.getDriver().findElement(By.xpath(".//*[@href='/manageacc.aspx']")).click();
 
-                switch (SubMenu)
-                {
+                switch (SubMenu) {
                     case "Accounts":
                         System.out.println("Accounts was clicked");
                         break;
@@ -97,6 +84,7 @@ public class NavigateMenu
                     case "Categories":
                         break;
                     case "Roles":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageRoles.aspx']")).click();
                         break;
                     case "Kiosks":
                         break;
@@ -104,24 +92,21 @@ public class NavigateMenu
                         break;
                     case "Device group":
                         break;
-                        default:
-                            System.out.println(SubMenu + "SubMenu is not found under Administration");
-                }
+                    default:
+                        System.out.println(SubMenu + "SubMenu is not found under Administration");
+
                 break;
-                }
-            case "Support":
-                {
+            }
+            case "Support": {
                 //Click Support Menu
-                    System.out.println("Support is cliked");
+                System.out.println("Support is cliked");
                 break;
             }
             default:
                 System.out.println(MainMenu + " MainMenu is not found");
-            }
+        }
 
-            }
-
-
+    }
 
 
 }
