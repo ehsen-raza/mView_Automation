@@ -2,6 +2,7 @@ package Services;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.asserts.SoftAssert;
 
 /**
  * This is class for wrapping webdriver methods.
@@ -124,6 +125,32 @@ public class General {
         } catch (Exception e) {
             System.out.println("Unable to Select Drop down field");
         }
+    }
+
+    /**
+     * This method will use to make assertion in test cases
+     * @param strActualResult: Provide actual result
+     * @param strExpectedResult: Provide expected result
+     */
+    public void VerifyResult(String strActualResult, String strExpectedResult) {
+        SoftAssert assertion = new SoftAssert();
+        if (appEnv.isTestPass()) {
+            System.out.println("Expected Result: " + strExpectedResult);
+            System.out.println("Actual Result: " + strActualResult);
+        }
+        assertion.assertTrue(appEnv.isTestPass(), strActualResult);
+        assertion.assertAll();
+    }
+
+    /**
+     * This is overloading method of VerifyResult provide only boolean decision and reason to fail a test
+     * @param Msg: Reason why this test is failing
+     * @param Condition: Test Pass/Fail decision
+     */
+    public void VerifyResult(String Msg, boolean Condition) {
+        SoftAssert assertion = new SoftAssert();
+        assertion.assertTrue(Condition, Msg);
+        assertion.assertAll();
     }
 
 }
