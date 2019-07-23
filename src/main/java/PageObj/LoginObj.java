@@ -33,6 +33,7 @@ public class LoginObj {
      */
     public void Type_UserName(String UserName) {
         appEnv.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        appEnv.getDriver().findElement(By.id("txtUserName")).clear();
         appEnv.getDriver().findElement(By.id("txtUserName")).sendKeys(UserName);
     }
 
@@ -42,6 +43,7 @@ public class LoginObj {
      * @param Password
      */
     public void Type_Password(String Password) {
+        appEnv.getDriver().findElement(By.id("txtPassword")).clear();
         appEnv.getDriver().findElement(By.id("txtPassword")).sendKeys(Password);
     }
 
@@ -83,15 +85,6 @@ public class LoginObj {
 
     }
 
-    public boolean Incorrect_Login(String ExpectedText){
-        if(appEnv.getDriver().findElement(By.cssSelector("div[style='color: #F3F3F4; font-size: 16px;']")).getText().equalsIgnoreCase(ExpectedText))
-        return true;
-        else
-            return false;
-    }
-    //    List<WebElement> webElementList = appEnv.getDriver().findElement(By.tagName(""))
-    //    return false;
-    //}
 
 
 }
