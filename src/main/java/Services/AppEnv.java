@@ -8,9 +8,11 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AppEnv {
 
-    String Browser;
-    RemoteWebDriver Driver;
-    String Domain;
+    private String Browser;
+    private RemoteWebDriver Driver;
+    private String Domain;
+    private boolean IsTestPass;
+    private boolean IsLogInReq;
 
 
     /**
@@ -46,6 +48,22 @@ public class AppEnv {
 
     public void setBrowser(String browser) {
         Browser = browser;
+    }
+
+    public boolean isTestPass() {
+        return IsTestPass;
+    }
+
+    public void setTestPass(boolean testPass) {
+        IsTestPass = testPass;
+    }
+
+    public boolean isLogInReq() {
+        return IsLogInReq;
+    }
+
+    public void setLogInReq(boolean logInReq) {
+        IsLogInReq = logInReq;
     }
 }
 

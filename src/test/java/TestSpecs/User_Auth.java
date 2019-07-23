@@ -3,6 +3,7 @@ package TestSpecs;
 import PageObj.LoginObj;
 import PageObj.NavigateMenu;
 import Services.AppEnv;
+import Services.General;
 import TestManager.SuiteListener;
 import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
@@ -12,11 +13,13 @@ import org.testng.annotations.Test;
  * This class will ensure the user authentication functionality of the application
  */
 @Listeners(SuiteListener.class)
+
 public class User_Auth {
 
     private static AppEnv appEnv = new AppEnv();
     private LoginObj pgLogin = null;
     private NavigateMenu navigateMenu = null;
+    private static General Utils = null;
 
     /**
      * This is constructor class
@@ -26,6 +29,7 @@ public class User_Auth {
         appEnv = SuiteListener.appEnv;
         pgLogin = LoginObj.getInstance(appEnv);
         navigateMenu = NavigateMenu.getInstance(appEnv);
+        Utils = General.getInstance(appEnv);
     }
 
     /**
@@ -38,8 +42,11 @@ public class User_Auth {
         pgLogin.Type_Password("irfan");
         pgLogin.Click_LoginButton();
         pgLogin.Click_Proceed();
-        pgLogin.Compare_Assert(appEnv.getDriver().findElement(By.id("ctl00_btnLogout")).getText(), "Log Out");
+        appEnv.setTestPass(pgLogin.IsSession_Logged_In());
+        Utils.VerifyResult("User session is not logged in", appEnv.isTestPass());
+
     }
+<<<<<<< HEAD
     @Test(enabled = true, priority = 0)
     public void Incorrect_Credentials() {
         pgLogin.Type_UserName("incorrect_username@gmail.com");
@@ -47,6 +54,11 @@ public class User_Auth {
         pgLogin.Click_LoginButton();
         pgLogin.Compare_Assert(appEnv.getDriver().findElement(By.xpath("//td[contains(text(),'Incorrect login details. Please try again.')]")).getText(),"Incorrect login details. Please try again.");
 
+    @Test(enabled = true, priority = 2)
+    public void Navigate_To_Roles() {
+        System.out.println("Navigate is started.");
+        navigateMenu.SelectMenu("Administration", "Roles");
+>>>>>>> 0c145e3f3ca37c8a48a7a0291b85e4304d151273
 
     }
 

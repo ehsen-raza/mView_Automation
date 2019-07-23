@@ -85,6 +85,40 @@ public class LoginObj {
 
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * This method will verify either session is logged in or not
+     * @return boolean
+     */
+    public boolean IsSession_Logged_In(){
+        return appEnv.getDriver().findElement(By.id("ctl00_btnLogout")).getText().equalsIgnoreCase("Log Out");
+    }
+
+    public boolean Incorrect_Login(String ExpectedText){
+        if(appEnv.getDriver().findElement(By.cssSelector("div[style='color: #F3F3F4; font-size: 16px;']")).getText().equalsIgnoreCase(ExpectedText))
+        return true;
+        else
+            return false;
+    }
+
+    //----------------------------Behavior Methods ------------------------
+
+    /**
+     * This method will use to login the session
+     * @param Email Provide email address
+     * @param Password Provide password
+     * @return boolean
+     */
+    public boolean LogIn(String Email, String Password){
+        Type_UserName(Email);
+        Type_Password(Password);
+        Click_LoginButton();
+        Click_Proceed();
+        return IsSession_Logged_In();
+    }
+
+>>>>>>> 0c145e3f3ca37c8a48a7a0291b85e4304d151273
 
 
 }
