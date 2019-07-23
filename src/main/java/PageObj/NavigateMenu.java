@@ -2,9 +2,6 @@ package PageObj;
 
 import Services.AppEnv;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class NavigateMenu {
 
@@ -23,32 +20,37 @@ public class NavigateMenu {
     public void SelectMenu(String MainMenu, String SubMenu) {
         switch (MainMenu) {
             case "Media": {
-                appEnv.getDriver().findElement(By.xpath("//*[@id='ctl00_navMenu']/div[@class='nav_menu']/ul/li[1]")).click();
+                appEnv.getDriver().findElement(By.xpath(".//*[@href='/Sessions.aspx']")).click();
                 switch (SubMenu) {
                     case "Sessions":
-                        System.out.println("Sessions Clicked.");
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/Sessions.aspx']")).click();
                         break;
                     case "Search":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/Search.aspx']")).click();
                         break;
                     case "Camera Dashboard":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/CameraAssetsDashboard.aspx']")).click();
                         break;
                     case "RTAC":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/RFA.aspx']")).click();
                         break;
                     case "Reports":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/Reports.aspx']")).click();
                         break;
                     case "Dip Sampling":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/DipSampling.aspx']")).click();
                         break;
                     case "Evidence Brief":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageEvidenceBrief.aspx']")).click();
                         break;
                     default:
-                        System.out.println("SubMenu is not found under Media");
+                        System.out.println(SubMenu + "SubMenu is not found under Media");
 
                 }
                 break;
             }
             case "Streaming": {
-                System.out.println("Streaming menu clicked");
-                //Click Streaming Menu
+
                 switch (SubMenu) {
                     case "Live":
                         break;
@@ -63,47 +65,65 @@ public class NavigateMenu {
 
                 switch (SubMenu) {
                     case "Accounts":
-                        System.out.println("Accounts was clicked");
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageEvidenceBrief.aspx']")).click();
                         break;
                     case "Organizations":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/managecomp.aspx']")).click();
                         break;
                     case "Devices":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/managedevices.aspx']")).click();
                         break;
                     case "ICV DashBoard":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageDashBoard.aspx']")).click();
                         break;
                     case "Cameras":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/manageExternalCamera.aspx']")).click();
                         break;
                     case "Camera Settings":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/UserCameraSettings.aspx']")).click();
                         break;
                     case "Camera Log":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/DeviceEventCapture.aspx']")).click();
                         break;
                     case "Firmware":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/manageFirmware.aspx']")).click();
                         break;
                     case "Retention Policies":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageRetPolicy.aspx']")).click();
                         break;
                     case "Categories":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/Category.aspx']")).click();
                         break;
                     case "Roles":
                         appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageRoles.aspx']")).click();
                         break;
                     case "Kiosks":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageDock.aspx']")).click();
                         break;
                     case "SAP":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageSap.aspx']")).click();
                         break;
                     case "Device group":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageDeviceGroups.aspx']")).click();
+                        break;
+                    case "Provisioning":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/ManageProvisioning.aspx']")).click();
+                        break;
+                    case "T&C":
+                        appEnv.getDriver().findElement(By.xpath(".//*[@href='/Terms.aspx']")).click();
                         break;
                     default:
                         System.out.println(SubMenu + "SubMenu is not found under Administration");
 
                 break;
             }
-            case "Support": {
-                //Click Support Menu
-                System.out.println("Support is cliked");
+            case "Support":
+                appEnv.getDriver().findElement(By.xpath(".//*[@href='/support.aspx']")).click();
                 break;
-            }
-            default:
+                default:
                 System.out.println(MainMenu + " MainMenu is not found");
+
+
         }
 
     }
