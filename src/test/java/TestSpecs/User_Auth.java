@@ -5,6 +5,7 @@ import PageObj.NavigateMenu;
 import Services.AppEnv;
 import Services.General;
 import TestManager.SuiteListener;
+import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -37,17 +38,21 @@ public class User_Auth {
 
     @Test(enabled = true, priority = 1)
     public void User_Login() {
+        SuiteListener.getReportManager().LogStepInfo("Login Started");
         pgLogin.Type_UserName("raiirfan@gmail.com");
         pgLogin.Type_Password("irfan");
         pgLogin.Click_LoginButton();
         pgLogin.Click_Proceed();
         appEnv.setTestPass(pgLogin.IsSession_Logged_In());
         Utils.VerifyResult("User session is not logged in", appEnv.isTestPass());
+        SuiteListener.getReportManager().LogStepInfo("Login Successfull");
+
 
     }
 
     @Test(enabled = true, priority = 0)
     public void Incorrect_Credentials() {
+        SuiteListener.getReportManager().LogStepInfo("Login with Wrong Credentials Test Started");
         pgLogin.Type_UserName("incorrect_username@gmail.com");
         pgLogin.Type_Password("IncorectPassword");
         pgLogin.Click_LoginButton();

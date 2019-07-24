@@ -3,6 +3,7 @@ package TestManager;
 import Drivers.BrowserManager;
 import PageObj.LoginObj;
 import Services.AppEnv;
+import Services.ReportManager;
 import Services.SystemConfiguration;
 import org.testng.*;
 
@@ -10,10 +11,15 @@ import org.testng.*;
  * This is suite listener class to setup a suite before its execution
  */
 
-public class SuiteListener implements ISuiteListener, IInvokedMethodListener {
+public class SuiteListener implements ITestListener, ISuiteListener, IInvokedMethodListener {
     private final SystemConfiguration SysConfig = SystemConfiguration.getInstance(appEnv);
     private BrowserManager browserManager = null;
     public static AppEnv appEnv = new AppEnv();
+
+    public static ReportManager reportManager = null;
+    public static ReportManager getReportManager(){
+        return reportManager;
+    }
 
 
     @Override
@@ -37,7 +43,8 @@ public class SuiteListener implements ISuiteListener, IInvokedMethodListener {
         TestFiltration testFiltration = TestFiltration.getInstance(appEnv);
         testFiltration.Test_Assignment(iInvokedMethod);
         LoginObj pgLogin = LoginObj.getInstance(appEnv);
-        appEnv.setTestPass(false);
+ //       ReportManager reportManager = new ReportManager();
+
         /* Log In the session if required */
         if(appEnv.isLogInReq()){
             pgLogin.LogIn("raiirfan@gmail.com","irfan");
@@ -46,6 +53,44 @@ public class SuiteListener implements ISuiteListener, IInvokedMethodListener {
 
     @Override
     public void afterInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
+
+    }
+
+    @Override
+    public void onTestStart(ITestResult iTestResult) {
+        System.out.println("Test Started  " +  iTestResult.getName());
+        reportManager.InitReport(iTestResult.getName() , "  Execution Started");
+    }
+
+    @Override
+    public void onTestSuccess(ITestResult iTestResult) {
+       reportManager.LogTestStep(true,iTestResult.getName()+ " Passed ");
+    }
+
+    @Override
+    public void onTestFailure(ITestResult iTestResult) {
+        reportManager.LogTestStep(false,iTestResult.getName()+ " Failed ");
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult iTestResult) {
+
+    }
+
+    @Override
+    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
+
+    }
+
+    @Override
+    public void onStart(ITestContext iTestContext) {
+        reportManager = new ReportManager();
+        reportManager.TestEnvironment();
+    }
+
+    @Override
+    public void onFinish(ITestContext iTestContext) {
+        reportManager.EndReport();
 
     }
 }

@@ -30,6 +30,12 @@ public class TestFiltration {
             case "User_Login":
                 appEnv.setLogInReq(false);
                 break;
+            case "Incorrect_Credentials":
+                appEnv.setLogInReq(false);
+                break;
+            case "Empty_Credentials":
+                appEnv.setLogInReq(false);
+                break;
 
             case "Navigate_To_Roles":
                 appEnv.setLogInReq(true);
