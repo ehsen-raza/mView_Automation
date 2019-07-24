@@ -85,8 +85,6 @@ public class LoginObj {
 
     }
 
-<<<<<<< HEAD
-=======
     /**
      * This method will verify either session is logged in or not
      * @return boolean
@@ -118,7 +116,6 @@ public class LoginObj {
         return IsSession_Logged_In();
     }
 
->>>>>>> 0c145e3f3ca37c8a48a7a0291b85e4304d151273
 
 
 }

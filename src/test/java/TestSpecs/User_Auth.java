@@ -5,7 +5,6 @@ import PageObj.NavigateMenu;
 import Services.AppEnv;
 import Services.General;
 import TestManager.SuiteListener;
-import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -36,7 +35,7 @@ public class User_Auth {
      * This test will make sure user login functionality is working correctly
      */
 
-   @Test(enabled = true, priority = 1)
+    @Test(enabled = true, priority = 1)
     public void User_Login() {
         pgLogin.Type_UserName("raiirfan@gmail.com");
         pgLogin.Type_Password("irfan");
@@ -46,7 +45,7 @@ public class User_Auth {
         Utils.VerifyResult("User session is not logged in", appEnv.isTestPass());
 
     }
-<<<<<<< HEAD
+
     @Test(enabled = true, priority = 0)
     public void Incorrect_Credentials() {
         pgLogin.Type_UserName("incorrect_username@gmail.com");
@@ -58,10 +57,7 @@ public class User_Auth {
     public void Navigate_To_Roles() {
         System.out.println("Navigate is started.");
         navigateMenu.SelectMenu("Administration", "Roles");
->>>>>>> 0c145e3f3ca37c8a48a7a0291b85e4304d151273
 
     }
-
-
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
