@@ -1,6 +1,7 @@
 package Services;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.asserts.SoftAssert;
 
@@ -140,6 +141,22 @@ public class General {
         }
         assertion.assertTrue(appEnv.isTestPass(), strActualResult);
         assertion.assertAll();
+    }
+
+    /**
+     *
+     * @param driver
+     * @param weElement
+     */
+    public void HighLightElement(RemoteWebDriver driver, WebElement weElement) {
+        driver.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');",
+                weElement);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+        driver.executeScript("arguments[0].setAttribute('style','border: solid 2px white');", weElement);
     }
 
     /**

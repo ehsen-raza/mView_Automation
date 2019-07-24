@@ -71,6 +71,15 @@ public class LoginObj {
     }
 
     /**
+     *
+     * @return
+     */
+    public String Get_Error_Message(){
+        WebElement webElement = appEnv.getDriver().findElementByCssSelector("td[9]");
+
+        return  webElement.getText();
+    }
+    /**
      * This function is to click proceed button on Terms and Conditions page.
      */
     public void Click_Proceed() {

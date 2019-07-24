@@ -51,12 +51,9 @@ public class User_Auth {
         pgLogin.Type_UserName("incorrect_username@gmail.com");
         pgLogin.Type_Password("IncorectPassword");
         pgLogin.Click_LoginButton();
-        pgLogin.Compare_Assert(appEnv.getDriver().findElement(By.xpath("//td[contains(text(),'Incorrect login details. Please try again.')]")).getText(),"Incorrect login details. Please try again.");
-
-    @Test(enabled = true, priority = 2)
-    public void Navigate_To_Roles() {
-        System.out.println("Navigate is started.");
-        navigateMenu.SelectMenu("Administration", "Roles");
+        String ActualError = pgLogin.Get_Error_Message();
+        appEnv.setTestPass(ActualError.equalsIgnoreCase("Incorrect login details. Please try again."));
+        Utils.VerifyResult("Incorrect error message", appEnv.isTestPass());
 
     }
 }

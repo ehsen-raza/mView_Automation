@@ -37,7 +37,7 @@ public class SuiteListener implements ISuiteListener, IInvokedMethodListener {
         TestFiltration testFiltration = TestFiltration.getInstance(appEnv);
         testFiltration.Test_Assignment(iInvokedMethod);
         LoginObj pgLogin = LoginObj.getInstance(appEnv);
-
+        appEnv.setTestPass(false);
         /* Log In the session if required */
         if(appEnv.isLogInReq()){
             pgLogin.LogIn("raiirfan@gmail.com","irfan");
