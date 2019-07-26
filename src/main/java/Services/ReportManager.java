@@ -7,16 +7,25 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ReportManager {
 
-    private ExtentReports extentReports = null;
-    private ExtentTest extentTest = null;
+    private static ReportManager reportManager = new ReportManager();
+    private static AppEnv appEnv = new AppEnv();
+    private static ExtentReports extentReports = null;
+    private static ExtentTest extentTest = null;
+    private static General Utils = null;
 
-    public ReportManager()
-    {
+    private ReportManager() {
+    }
+
+    /* Static 'instance' method */
+    public static ReportManager getInstance(AppEnv appEnv) {
+        ReportManager.appEnv = appEnv;
+        Utils = General.getInstance(appEnv);
         extentReports = new ExtentReports();
-        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("Reports.html");
+        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(Utils.Get_TimeStamp());
         htmlReporter.setAppendExisting(true);
         htmlReporter.config().setChartVisibilityOnOpen(false);
         extentReports.attachReporter(htmlReporter);
+        return reportManager;
     }
 
     public void TestEnvironment()

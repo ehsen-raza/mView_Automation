@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -71,13 +72,14 @@ public class LoginObj {
     }
 
     /**
-     *
+     *This message will compare Incorrect Login message
      * @return
      */
-    public String Get_Error_Message(){
-        WebElement webElement = appEnv.getDriver().findElementByCssSelector("td[9]");
-
-        return  webElement.getText();
+    public boolean Get_Error_Message(){
+        List<WebElement> elementList = appEnv.getDriver().findElements(By.tagName("td"));
+        for(int i=0; i<elementList.size(); i++)
+            if(elementList.get(i).getText().equalsIgnoreCase("Incorrect login details. Please try again."));
+        return  true;
     }
     /**
      * This function is to click proceed button on Terms and Conditions page.
@@ -102,12 +104,6 @@ public class LoginObj {
         return appEnv.getDriver().findElement(By.id("ctl00_btnLogout")).getText().equalsIgnoreCase("Log Out");
     }
 
-    public boolean Incorrect_Login(String ExpectedText){
-        if(appEnv.getDriver().findElement(By.cssSelector("div[style='color: #F3F3F4; font-size: 16px;']")).getText().equalsIgnoreCase(ExpectedText))
-        return true;
-        else
-            return false;
-    }
 
     //----------------------------Behavior Methods ------------------------
 

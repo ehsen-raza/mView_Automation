@@ -29,7 +29,8 @@ public class BrowserManager {
     public void Launch_Browser() {
 
         if (appEnv.getBrowser().equalsIgnoreCase("Chrome")) {
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().clearPreferences();
+            WebDriverManager.chromedriver().version("2.46").setup();
             ChromeOptions crOptions = new ChromeOptions();
             chromeDriver = new ChromeDriver(crOptions);
             chromeDriver.manage().window().maximize();

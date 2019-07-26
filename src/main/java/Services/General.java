@@ -1,5 +1,6 @@
 package Services;
 
+import org.joda.time.DateTime;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -169,6 +170,20 @@ public class General {
         assertion.assertTrue(Condition, Msg);
         assertion.assertAll();
     }
+
+    /**
+     * This Method will return file for reports file having time stamp in the given format
+     * @return
+     */
+    public String Get_TimeStamp()
+    {
+        DateTime dt = new DateTime();
+        //String filename = dt.toString("SSSSssmmww" + "_AutomationReport.html");
+        String filename = dt.toString("SSSSssmmww'_AutomationReport.html" );
+        System.out.println(filename);
+        return filename;
+    }
+
 
 }
 

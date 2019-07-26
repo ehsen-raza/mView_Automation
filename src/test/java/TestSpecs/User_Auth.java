@@ -5,7 +5,6 @@ import PageObj.NavigateMenu;
 import Services.AppEnv;
 import Services.General;
 import TestManager.SuiteListener;
-import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -56,9 +55,8 @@ public class User_Auth {
         pgLogin.Type_UserName("incorrect_username@gmail.com");
         pgLogin.Type_Password("IncorectPassword");
         pgLogin.Click_LoginButton();
-        String ActualError = pgLogin.Get_Error_Message();
-        appEnv.setTestPass(ActualError.equalsIgnoreCase("Incorrect login details. Please try again."));
-        Utils.VerifyResult("Incorrect error message", appEnv.isTestPass());
+        appEnv.setTestPass(pgLogin.Get_Error_Message());
+        Utils.VerifyResult("true", appEnv.isTestPass());
 
     }
 }

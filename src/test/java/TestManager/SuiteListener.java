@@ -28,12 +28,15 @@ public class SuiteListener implements ITestListener, ISuiteListener, IInvokedMet
         browserManager = BrowserManager.getInstance(appEnv);
         browserManager.Launch_Browser();
         browserManager.GetURL();
+        reportManager = ReportManager.getInstance(appEnv);
+        reportManager.TestEnvironment();
 
 
     }
 
     @Override
     public void onFinish(ISuite iSuite) {
+        reportManager.EndReport();
         browserManager.Kill_Driver();
     }
 
@@ -84,13 +87,12 @@ public class SuiteListener implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        reportManager = new ReportManager();
-        reportManager.TestEnvironment();
+
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        reportManager.EndReport();
+
 
     }
 }
