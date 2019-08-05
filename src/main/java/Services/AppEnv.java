@@ -13,7 +13,7 @@ public class AppEnv {
     private String Domain;
     private boolean IsTestPass;
     private boolean IsLogInReq;
-
+    private ReportManager reportManager = null;
 
     /**
      * This mehtod is get domain name
@@ -64,6 +64,14 @@ public class AppEnv {
 
     public void setLogInReq(boolean logInReq) {
         IsLogInReq = logInReq;
+    }
+
+    public ReportManager getReportManager() {
+        return reportManager;
+    }
+
+    public void setReportManager(ReportManager reportManager) {
+        this.reportManager = reportManager;
     }
 }
 

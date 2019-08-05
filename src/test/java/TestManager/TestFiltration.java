@@ -25,26 +25,30 @@ public class TestFiltration {
 
     public void Test_Assignment(IInvokedMethod iInvokedMethod){
         ITestNGMethod methodName = iInvokedMethod.getTestMethod();
-
+        String TestDescription = "";
         switch (methodName.getMethodName()) {
             case "User_Login":
                 appEnv.setLogInReq(false);
+                TestDescription = "This test will log in the user";
                 break;
             case "Incorrect_Credentials":
                 appEnv.setLogInReq(false);
+                TestDescription = "This test will log in the user with incorrect credentials";
                 break;
             case "Empty_Credentials":
                 appEnv.setLogInReq(false);
+                TestDescription = "This test will log in the user with empty credentials";
                 break;
 
             case "Navigate_To_Roles":
                 appEnv.setLogInReq(true);
+                TestDescription = "This test will navigate to the Roles page";
                 break;
 
         default:
             appEnv.setLogInReq(true);
             break;
         }
-
+        appEnv.getReportManager().InitReport(methodName.getMethodName() , TestDescription);
     }
 }

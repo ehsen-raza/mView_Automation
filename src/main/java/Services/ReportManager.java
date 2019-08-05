@@ -21,13 +21,16 @@ public class ReportManager {
         ReportManager.appEnv = appEnv;
         Utils = General.getInstance(appEnv);
         extentReports = new ExtentReports();
-        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(Utils.Get_TimeStamp());
+        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("./src/main/resources/Reports/" + Utils.Get_TimeStamp());
         htmlReporter.setAppendExisting(true);
         htmlReporter.config().setChartVisibilityOnOpen(false);
         extentReports.attachReporter(htmlReporter);
         return reportManager;
     }
 
+    /**
+     *
+     */
     public void TestEnvironment()
     {
         extentReports.setSystemInfo("User : ", System.getProperty("user.name"));

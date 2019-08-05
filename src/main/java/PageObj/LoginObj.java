@@ -88,11 +88,11 @@ public class LoginObj {
 
         WebElement btProceed = appEnv.getDriver().findElement(By.id("yes"));
         boolean GetStatus = Utils.ClickObj(btProceed);
-        System.out.println("Proceed button clicked: " + GetStatus);
+        appEnv.getReportManager().LogStepInfo("Proceed button clicked: " + GetStatus);
 
         Utils.StaticWait(2000);
         GetStatus = Utils.Wait_For_Element(btProceed, 3);
-        System.out.println("Proceed Window Exist on UI: " + GetStatus);
+        appEnv.getReportManager().LogStepInfo("Proceed Window Exist on UI: " + GetStatus);
 
     }
 
@@ -104,6 +104,12 @@ public class LoginObj {
         return appEnv.getDriver().findElement(By.id("ctl00_btnLogout")).getText().equalsIgnoreCase("Log Out");
     }
 
+    public boolean Incorrect_Login(String ExpectedText){
+        if(appEnv.getDriver().findElement(By.cssSelector("div[style='color: #F3F3F4; font-size: 16px;']")).getText().equalsIgnoreCase(ExpectedText))
+        return true;
+        else
+            return false;
+    }
 
     //----------------------------Behavior Methods ------------------------
 
