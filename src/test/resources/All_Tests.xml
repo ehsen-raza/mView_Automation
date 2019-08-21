@@ -11,6 +11,7 @@
             <class name="TestSpecs.User_Auth">
                 <methods>
                     <include name="User_Login" />
+                    <include name="Navigate" />
                 </methods>
             </class>
         </classes>
