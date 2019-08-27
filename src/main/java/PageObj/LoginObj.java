@@ -120,12 +120,17 @@ public class LoginObj {
      * @return boolean
      */
     public boolean LogIn(String Email, String Password){
-        Type_UserName(Email);
-        Type_Password(Password);
-        Click_LoginButton();
-        Click_Proceed();
-        return IsSession_Logged_In();
-    }
+
+        if(IsSession_Logged_In())
+        return  true;
+        else {
+            Type_UserName(Email);
+            Type_Password(Password);
+            Click_LoginButton();
+            Click_Proceed();
+            return IsSession_Logged_In();
+        }
+     }
 
 
 
