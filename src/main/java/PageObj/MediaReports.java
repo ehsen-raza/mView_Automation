@@ -23,7 +23,14 @@ public class MediaReports {
 
 
     public WebElement findMediaReports(){
-        return appEnv.getDriver().findElement(By.id("ID_NEEDS_BE_ADDED_ONCE_PAGE_OPENS"));
+        WebElement webElement;
+        try {
+            webElement = appEnv.getDriver().findElement(By.id("ID_NEEDS_BE_ADDED_ONCE_PAGE_OPENS"));
+        }
+        catch (Exception exh){
+            webElement = null;
+        }
+        return webElement;
     }
 
     public boolean IsPageOK(){

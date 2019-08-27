@@ -101,7 +101,13 @@ public class LoginObj {
      * @return boolean
      */
     public boolean IsSession_Logged_In(){
-        return appEnv.getDriver().findElement(By.id("ctl00_btnLogout")).getText().equalsIgnoreCase("Log Out");
+        boolean bState;
+        try{
+            bState = appEnv.getDriver().findElement(By.id("ctl00_btnLogout")).getText().equalsIgnoreCase("Log Out");
+        }catch(Exception exh){
+            bState = false;
+        }
+        return bState;
     }
 
     public boolean Incorrect_Login(String ExpectedText){
