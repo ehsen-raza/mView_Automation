@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="All_Tests">
-    <listeners>
 
-        <listener class-name="TestManager.SuiteListener"></listener>
-    </listeners>
     <test name="User_Login">
 
         <classes>
             <class name="TestSpecs.User_Auth">
-                <methods>
-                    <include name="User_Login" />
-                    <include name="Navigate" />
-                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Page_Verification">
+
+        <classes>
+            <class name="TestSpecs.PageVerification">
             </class>
         </classes>
     </test>

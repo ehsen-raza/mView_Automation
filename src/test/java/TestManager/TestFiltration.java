@@ -40,9 +40,33 @@ public class TestFiltration {
                 TestDescription = "This test will log in the user with empty credentials";
                 break;
 
-            case "Navigate_To_Roles":
+            case "Verify_Media_Camera_Dashboard_Page":
                 appEnv.setLogInReq(true);
-                TestDescription = "This test will navigate to the Roles page";
+                TestDescription = "This will verify Media Camera Dashboard page Loading";
+                break;
+            case "Verify_Media_Reports_Page":
+                appEnv.setLogInReq(true);
+                TestDescription = "This will Verify_Media_Reports_Page page Loading";
+                break;
+            case "Verify_Media_RTAC_Page":
+                appEnv.setLogInReq(true);
+                TestDescription = "This will  Verify_Media_RTAC_Page Loading";
+                break;
+            case "Verify_Media_Search_Page":
+                appEnv.setLogInReq(true);
+                TestDescription = "This will Verify_Media_RTAC_Page  Loading";
+                break;
+            case "Verify_Media_Sessions_Page":
+                appEnv.setLogInReq(true);
+                TestDescription = "This will Verify_Media_Search_Page  Loading";
+                break;
+            case "Verify_Media_Dip_Sampling_Page":
+                appEnv.setLogInReq(true);
+                TestDescription = "This will Verify_Media_Dip_Sampling_Page  Loading";
+                break;
+            case "Verify_Media_Evidence_Brief_Page":
+                appEnv.setLogInReq(true);
+                TestDescription = "This will Verify_Media_Evidence_Brief_Page  Loading";
                 break;
 
         default:
